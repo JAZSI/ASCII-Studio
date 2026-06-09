@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ASCII Image Generator</title>
-    <script src="/script.js"></script>
-</head>
-<body>
-    <canvas id="canvas"></canvas>
-    <br>
-    <button id="convert-button">Convert to ASCII</button>
-    <br>
-    <textarea id="ascii-output"></textarea>
-    <canvas id="ascii-canvas"></canvas>
-    <br>
-    <button id="convert-ascii-button">Convert ASCII to Image</button>
-
-    <input type="file" id="image-input" accept="image/*">
-    <button id="copy-button">Copy</button>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCII Studio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

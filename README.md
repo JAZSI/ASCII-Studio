@@ -1,24 +1,75 @@
-# ASCII Art Converter
-This project allows you to convert an image to ASCII art and back again.
+# React + TypeScript + Vite
 
-## Getting Started
-To use this project simply open the `index.html` file in your web browser to access the converter.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Using the Converter
-To convert an image to ASCII art:
+Currently, two official plugins are available:
 
-Click the "Choose File" button to select an image file from your computer.
-Click the "Convert" button to display the ASCII representation of the image in the textarea.
-Click the "Copy" button to copy the ASCII representation to the clipboard.
-To convert an ASCII representation back to an image:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Paste the ASCII representation into the textarea.
-Click the "Convert ASCII to Image" button to display the image on the second canvas.
-## Customizing the Converter
-You can customize the ASCII characters and colors used for the conversion by modifying the `ASCII_CHARS` and `ASCII_COLORS` variables in the `scripts.js` file.
+## React Compiler
 
-## Credits
-This project was created by Jaszi.
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-## License
-This project is licensed under the MIT License.
+Note: This will impact Vite dev & build performances.
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
